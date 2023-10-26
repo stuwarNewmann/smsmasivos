@@ -1,0 +1,104 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
+}
+
+.hero-section {
+    background-color: #0056b3; /* Azul oscuro para evocar confianza */
+    color: white;
+    position: relative;
+    padding: 60px 0;
+}
+
+.card {
+    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+#lista-carrito .btn {
+    margin: 0 5px;
+}
+
+#lista-carrito {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#modal-pago {
+    z-index: 1050;
+}
+
+.navbar {
+    margin-bottom: 50px;
+    background-color: #0056b3;
+}
+
+.container {
+    transition: margin-left 0.5s;
+}
+
+.carrito-activo .container {
+    margin-left: 20%;
+}
+
+.carrito-activo .card {
+    transform: scale(0.9);
+}
+
+#comprar {
+    display: none;
+    background-color: #FFC107; /* Amarillo para evocar energía y acción */
+    color: #333;
+}
+
+.bg-primary {
+    background-color: #0056b3 !important;
+}
+
+.card-carrito {
+    display: none;
+}
+
+.carrito-activo .card-carrito {
+    display: block;
+}
+
+.benefits-section, .testimonials-section, .cta-section {
+    padding: 60px 0;
+    background: #fff;
+}
+
+.benefits-section h3, .testimonials-section h2, .cta-section h2 {
+    margin-bottom: 30px;
+    color: #0056b3;
+}
+
+blockquote {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 30px;
+    border-left: 5px solid #FFC107;
+}
+
+blockquote footer {
+    display: block;
+    margin-top: 20px;
+    font-style: italic;
+    color: #666;
+}
+
+.agregar {
+    background-color: #FFC107;
+    color: #333;
+    border: none;
+}
+
+.agregar:hover {
+    background-color: #e0a800;
+}

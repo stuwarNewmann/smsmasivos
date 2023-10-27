@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let carrito = [];
 
+    // Cargar el carrito desde el localStorage al cargar la página
+    if (localStorage.getItem('carrito')) {
+        carrito = JSON.parse(localStorage.getItem('carrito'));
+        actualizarCarrito();
+    }
+
     productos.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const card = e.target.closest('.card');
@@ -62,6 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
             carritoContainer.style.display = 'none';
             eligePaqueteBtn.style.display = 'none';
         }
+
+        // Guardar el carrito en el localStorage
+        localStorage.setItem('carrito', JSON.stringify(carrito));
     }
 
     function enviarAWhatsApp() {
@@ -84,13 +93,19 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const numeroWhatsApp = "3053053651";
     
+        // Vaciar el carrito y el localStorage
+        carrito = [];
+        actualizarCarrito();
+        localStorage.removeItem('carrito');
+    
         // Redirigir a WhatsApp después de un breve retraso
         setTimeout(() => {
             const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensaje)}`;
             window.open(urlWhatsApp, '_blank');
+            
             // Ocultar la pantalla de carga
             document.querySelector('.loading-screen').style.display = 'none';
-        }, 2000); // 2000 milisegundos (2 segundos) de retraso
+        }, 2000);
     }
     
 

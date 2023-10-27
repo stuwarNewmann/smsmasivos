@@ -66,23 +66,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function enviarAWhatsApp() {
         const nombreCliente = document.getElementById('nombre-cliente').value.trim();
-
+    
         if (!nombreCliente) {
             alert('Por favor, introduce tu nombre para una atención personalizada.');
             return;
         }
-
-        let mensaje = `Hola, quiero adquirir paquetes SMS:\n`;
     
+        // Mostrar la pantalla de carga
+        document.querySelector('.loading-screen').style.display = 'flex';
+    
+        let mensaje = `Hola, quiero adquirir paquetes SMS:\n`;
+        
         carrito.forEach(producto => {
             const total = producto.precioPorMensaje * parseInt(producto.nombre) * producto.cantidad;
             mensaje += `${producto.nombre} mensajes - ${formatearPrecio(total)} \n`;
         });
-    
+        
         const numeroWhatsApp = "3053053651";
-        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensaje)}`;
-        window.open(urlWhatsApp, '_blank');
+    
+        // Redirigir a WhatsApp después de un breve retraso
+        setTimeout(() => {
+            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensaje)}`;
+            window.open(urlWhatsApp, '_blank');
+            // Ocultar la pantalla de carga
+            document.querySelector('.loading-screen').style.display = 'none';
+        }, 2000); // 2000 milisegundos (2 segundos) de retraso
     }
+    
 
     listaCarrito.addEventListener('click', (e) => {
         if (e.target.classList.contains('btn-eliminar')) {
